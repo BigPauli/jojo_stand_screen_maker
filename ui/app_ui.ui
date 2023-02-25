@@ -462,7 +462,7 @@ background-color: &quot;#FFF1DC&quot;
    <property name="geometry">
     <rect>
      <x>478</x>
-     <y>340</y>
+     <y>330</y>
      <width>111</width>
      <height>22</height>
     </rect>
@@ -477,8 +477,8 @@ background-color: &quot;#FFF1DC&quot;
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>340</y>
-     <width>151</width>
+     <y>330</y>
+     <width>161</width>
      <height>21</height>
     </rect>
    </property>
@@ -489,6 +489,39 @@ background-color: &quot;#FFF1DC&quot;
    </property>
    <property name="text">
     <string>Background Color</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>360</y>
+     <width>161</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Stat Polygon Color</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_9">
+   <property name="geometry">
+    <rect>
+     <x>478</x>
+     <y>360</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+	background-color: &quot;white&quot;
+}</string>
    </property>
   </widget>
  </widget>

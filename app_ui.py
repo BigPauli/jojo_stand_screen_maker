@@ -178,17 +178,29 @@ class Ui_Form(object):
         self.label_12.setFont(font)
         self.label_12.setObjectName("label_12")
         self.comboBox_8 = QtWidgets.QComboBox(parent=Form)
-        self.comboBox_8.setGeometry(QtCore.QRect(478, 340, 111, 22))
+        self.comboBox_8.setGeometry(QtCore.QRect(478, 330, 111, 22))
         self.comboBox_8.setStyleSheet("QWidget {\n"
 "    background-color: \"white\"\n"
 "}")
         self.comboBox_8.setObjectName("comboBox_8")
         self.label_13 = QtWidgets.QLabel(parent=Form)
-        self.label_13.setGeometry(QtCore.QRect(310, 340, 151, 21))
+        self.label_13.setGeometry(QtCore.QRect(310, 330, 161, 21))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_13.setFont(font)
         self.label_13.setObjectName("label_13")
+        self.label_14 = QtWidgets.QLabel(parent=Form)
+        self.label_14.setGeometry(QtCore.QRect(310, 360, 161, 21))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.label_14.setFont(font)
+        self.label_14.setObjectName("label_14")
+        self.comboBox_9 = QtWidgets.QComboBox(parent=Form)
+        self.comboBox_9.setGeometry(QtCore.QRect(478, 360, 111, 22))
+        self.comboBox_9.setStyleSheet("QWidget {\n"
+"    background-color: \"white\"\n"
+"}")
+        self.comboBox_9.setObjectName("comboBox_9")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -215,6 +227,7 @@ class Ui_Form(object):
         self.checkBox_2.setText(_translate("Form", "Use Default Background Color"))
         self.label_12.setText(_translate("Form", "Text Color"))
         self.label_13.setText(_translate("Form", "Background Color"))
+        self.label_14.setText(_translate("Form", "Stat Polygon Color"))
 
 
 if __name__ == "__main__":

@@ -13,7 +13,6 @@ class MyApplication(QWidget):
         # setting up ui from my ui file
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.ui.checkBox_2.setChecked(True)
 
         # making list of all the combo boxes and populating them with possible selections
         self.combo_boxes = [self.ui.comboBox, self.ui.comboBox_2, self.ui.comboBox_3, self.ui.comboBox_4,
@@ -30,10 +29,11 @@ class MyApplication(QWidget):
         self.ui.comboBox_7.addItems(['White', 'Black'])
         self.ui.comboBox_7.setCurrentText('Black')
 
-        # adds all color options to combo box 8
+        # adds all color options to combo boxes 8 and 9
         for name, code in ImageColor.colormap.items():
             self.ui.comboBox_8.addItem(name)
-
+            self.ui.comboBox_9.addItem(name)
+        self.ui.comboBox_9.setCurrentText('gray')
     def button_pushed(self):
         # creates an instance of the image manager and creates the background
         image_manager = ImageManager()
@@ -53,10 +53,14 @@ class MyApplication(QWidget):
 
         # gets desired rankings from the combo boxes, makes the stat wheel, and places it on background
         rankings = []
+        displacements = []
         for i in self.combo_boxes:
             rankings.append(i.currentText())
-
-        image_manager.draw_polygon(rankings)
+            if i.currentText() == '∞':
+                displacements.append(8)
+            else:
+                displacements.append(0)
+        image_manager.draw_polygon(rankings, displacements, self.ui.comboBox_9.currentText())
 
         # places the stand name and user name onto the background
         image_manager.place_names(self.ui.lineEdit.text(), self.ui.lineEdit_2.text(), self.ui.comboBox_7.currentText())

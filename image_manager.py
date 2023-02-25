@@ -16,6 +16,8 @@
 # POTE.: (120, 201)
 
 import sys
+
+import PIL.ImageColor
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -24,7 +26,7 @@ class ImageManager:
         self.bg = None
         self.completed_wheel = None
 
-    def draw_polygon(self, rankings):
+    def draw_polygon(self, rankings, displacements, color):
         power_dict = {'E': (297, 274), 'D': (297, 248), 'C': (297, 219), 'B': (297, 192), 'A': (297, 164),
                       '∞': (297, 140)}
         speed_dict = {'E': (321, 288), 'D': (345, 275), 'C': (369, 262), 'B': (393, 247), 'A': (416, 234),
@@ -45,21 +47,23 @@ class ImageManager:
             d = ImageDraw.Draw(im2)
             # create a font
             fnt = ImageFont.truetype("fonts/Roboto-Medium.ttf", 40)
+            # get rbg values out of chosen color
+            r, g, b = PIL.ImageColor.getrgb(color)
 
             # draw polygon at points given in the rankings argument
             d.polygon(
                 [power_dict[rankings[0]], speed_dict[rankings[1]], range_dict[rankings[2]],
                  durability_dict[rankings[3]],
                  precision_dict[rankings[4]], potential_dict[rankings[5]]], width=0, outline=(0, 0, 0, 0),
-                fill=(100, 100, 100, 100))
+                fill=(r, g, b, 125))
 
             # put text giving every letter grade at the proper location
-            d.text((285, 80), rankings[0], font=fnt, fill=(0, 0, 0, 255))
-            d.text((455, 175), rankings[1], font=fnt, fill=(0, 0, 0, 255))
-            d.text((455, 385), rankings[2], font=fnt, fill=(0, 0, 0, 255))
-            d.text((285, 480), rankings[3], font=fnt, fill=(0, 0, 0, 255))
-            d.text((115, 375), rankings[4], font=fnt, fill=(0, 0, 0, 255))
-            d.text((115, 175), rankings[5], font=fnt, fill=(0, 0, 0, 255))
+            d.text((285 - displacements[0], 80), rankings[0], font=fnt, fill=(0, 0, 0, 255))
+            d.text((455 - displacements[1], 175), rankings[1], font=fnt, fill=(0, 0, 0, 255))
+            d.text((455 - displacements[2], 385), rankings[2], font=fnt, fill=(0, 0, 0, 255))
+            d.text((285 - displacements[3], 480), rankings[3], font=fnt, fill=(0, 0, 0, 255))
+            d.text((115 - displacements[4], 375), rankings[4], font=fnt, fill=(0, 0, 0, 255))
+            d.text((115 - displacements[5], 175), rankings[5], font=fnt, fill=(0, 0, 0, 255))
 
             self.completed_wheel = Image.alpha_composite(image, im2)
             # resizes the wheel and adds it to the background
